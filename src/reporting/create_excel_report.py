@@ -8,6 +8,8 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.styles import Font, Alignment, PatternFill, numbers
 from openpyxl.chart import BarChart, LineChart, Reference, PieChart
 from openpyxl.worksheet.table import Table, TableStyleInfo
+import shutil
+from datetime import datetime
 
 def get_conn():
     load_dotenv()
@@ -255,7 +257,22 @@ def main():
     out_path = os.path.join(out_dir, 'automated_business_report.xlsx')
     wb.save(out_path)
     
+    # Archive Logic
+    archive_dir = os.path.join(out_dir, 'archive')
+    os.makedirs(archive_dir, exist_ok=True)
+    timestamp_str = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    archive_path = os.path.join(archive_dir, f'automated_business_report_{timestamp_str}.xlsx')
+    
+    # Collision safety
+    counter = 1
+    while os.path.exists(archive_path):
+        archive_path = os.path.join(archive_dir, f'automated_business_report_{timestamp_str}_{counter}.xlsx')
+        counter += 1
+        
+    shutil.copy2(out_path, archive_path)
+    
     print(f"\nSUCCESS: Excel Report generated at {out_path}")
+    print(f"ARCHIVED: {archive_path}")
     print("Worksheets Created:", wb.sheetnames)
     print("Reconciliation Passed: True")
 

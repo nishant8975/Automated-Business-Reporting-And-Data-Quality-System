@@ -1,7 +1,12 @@
 # Excel Reporting Layer
 
-This document details the architecture and generation of the Automated Business Report in Excel (`reports/excel/automated_business_report.xlsx`).
+This document details the architecture and generation of the Automated Business Report in Excel.
 
+## Output Locations & Archiving
+- **Latest Report**: `reports/excel/automated_business_report.xlsx` (Always represents the latest successful pipeline run).
+- **Historical Archive**: `reports/excel/archive/automated_business_report_YYYY-MM-DD_HH-MM-SS.xlsx`.
+
+Each successful pipeline run generates a new timestamped copy in the archive directory, while updating the latest report. Failed or partially generated workbooks are not archived.
 ## 1. Purpose
 The purpose of the Excel reporting layer is strictly presentation and visualization. It provides a professional, analyst-oriented workbook that consumes the validated `analytics` views from PostgreSQL.
 

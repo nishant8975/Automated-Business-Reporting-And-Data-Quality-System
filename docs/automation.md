@@ -27,13 +27,13 @@ The pipeline is designed to be fully idempotent and safe to rerun at any time:
 - The data quality results table is truncated before each run.
 - The clean tables and invalid records table are dropped/truncated and recreated.
 - Analytics views are created using `CREATE OR REPLACE VIEW`.
-- The final Excel report is overwritten on each run.
+- The final Excel report is overwritten on each run (`automated_business_report.xlsx`), and a new timestamped copy is added to the `archive/` directory.
 
 ## Output Files
 
 - `reports/data_quality_report.md`: Markdown summary of validation checks on raw data.
-- `reports/excel/automated_business_report.xlsx`: The final formatted Excel workbook containing KPIs and charts.
-
+- `reports/excel/automated_business_report.xlsx`: The final formatted Excel workbook containing KPIs and charts. Always represents the latest successful run.
+- `reports/excel/archive/automated_business_report_YYYY-MM-DD_HH-MM-SS.xlsx`: A timestamped archive copy of the report, generated only after a completely successful pipeline execution.
 ## PostgreSQL Schemas Involved
 
 - `staging`: Raw data directly ingested from CSVs.

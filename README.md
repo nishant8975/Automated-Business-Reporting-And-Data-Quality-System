@@ -111,7 +111,32 @@ python run_pipeline.py
 ```
 
 ## Screenshots
-*(Placeholder: Add screenshots of the Power BI dashboard here)*
+## Dashboard & Report Screenshots
+
+### Power BI Dashboard
+
+#### 1. Executive Overview
+![Power BI Executive Overview](reports/screenshots/powerbi_executive_overview.png)
+
+#### 2. Sales Performance
+![Power BI Sales Performance](reports/screenshots/powerbi_sales_performance.png)
+
+#### 3. Product & Category Analysis
+![Power BI Product & Category Analysis](reports/screenshots/powerbi_category_analysis.png)
+
+#### 4. Customer Analysis
+![Power BI Customer Analysis](reports/screenshots/powerbi_customer_analysis.png)
+
+#### 5. Payments & Reviews
+![Power BI Payments & Reviews](reports/screenshots/powerbi_payments_reviews.png)
+
+#### 6. Data Quality
+![Power BI Data Quality](reports/screenshots/powerbi_data_quality.png)
+
+### Excel Report
+
+#### Executive Summary
+![Excel Executive Summary](reports/screenshots/excel_executive_summary.png)
 
 ## Future Improvements
 - Replace Pandas `to_sql` with native Postgres `COPY` for scalable ingestion.
